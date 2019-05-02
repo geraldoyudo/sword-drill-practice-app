@@ -2,9 +2,12 @@ import { TestBed } from '@angular/core/testing';
 
 import { RandomVerseGeneratorService } from './random-verse-generator.service';
 import { Verse } from './verse';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('RandomVerseGeneratorService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule]
+  }));
 
   it('should be created', () => {
     const service: RandomVerseGeneratorService = TestBed.get(RandomVerseGeneratorService);
@@ -14,7 +17,8 @@ describe('RandomVerseGeneratorService', () => {
   it('should generate random verse', () => {
     const service: RandomVerseGeneratorService = TestBed.get(RandomVerseGeneratorService);
     let verse: Verse;
-    verse = service.generateVerse();
-    expect(verse).toBeTruthy();
+    service.generateVerse().then(verse => {
+      expect(verse).toBeTruthy();
+    })
   })
 });

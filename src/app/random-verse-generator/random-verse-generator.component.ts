@@ -9,7 +9,7 @@ import { Verse } from '../verse';
 })
 export class RandomVerseGeneratorComponent implements OnInit {
 
-  verse: Verse;
+  verse: Verse = new Verse();
 
   constructor(private randomVerseGeneratorService: RandomVerseGeneratorService) { }
 
@@ -18,6 +18,8 @@ export class RandomVerseGeneratorComponent implements OnInit {
   }
 
   generateVerse(): void {
-    this.verse = this.randomVerseGeneratorService.generateVerse();
+    this.randomVerseGeneratorService.generateVerse().then(verse => {
+      this.verse = verse;
+    })
   }
 }

@@ -4,17 +4,15 @@ import { RandomVerseGeneratorComponent } from './random-verse-generator.componen
 import { RandomVerseGeneratorService } from '../random-verse-generator.service';
 import { Verse } from '../verse';
 
-class MockRandomVerseGeneratorService extends RandomVerseGeneratorService{
+class MockRandomVerseGeneratorService {
 
-  constructor() { super(); }
-
-  generateVerse(): Verse {
+  generateVerse(): Promise<Verse> {
      let verse: Verse =  new Verse();
      verse.book = "Genesis";
      verse.chapter = "1";
      verse.verse = "1";
      verse.text = "And God Said, let there be light";
-     return verse;
+     return Promise.resolve(verse);
   }
 }
 describe('RandomVerseGeneratorComponent', () => {
@@ -41,22 +39,6 @@ describe('RandomVerseGeneratorComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should have correct book', () => {
-    expect(app.verse.book).toEqual('Genesis');
-  });
-
-  it('should have correct chapter', () => {
-    expect(app.verse.chapter).toEqual('1');
-  });
-
-  it('should have correct verse', () => {
-    expect(app.verse.verse).toEqual('1');
-  });
-
-  it('should have correct verse text', () => {
-    expect(app.verse.text).toEqual('And God Said, let there be light');
   });
 
   it('should call generateVerse method when clicked', () => {
