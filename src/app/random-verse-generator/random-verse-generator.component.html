@@ -1,7 +1,25 @@
-<h3>
-  {{verse.book}} {{verse.chapter}}:{{verse.verse}}
-</h3>
-<p [innerHTML]="verse.text">
-</p>
 
-<button id="generateVerseButton" (click)="generateVerse()">New Verse</button>
+<mat-card class="random-verse" style="margin: auto; text-align: center" *ngIf="verse.book">
+  <mat-card-header style="display: inline-block">
+    <div mat-card-avatar class="random-verse-image"></div>
+    <mat-card-title>{{verse.book}}</mat-card-title>
+    <mat-card-subtitle>{{verse.chapter}}:{{verse.verse}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content fxLayout="row">
+    <div fxFlex="20%"></div>
+    <div fxFlex="60%">
+      <p [innerHTML]="verse.text"></p>
+    </div>
+    <div fxFlex="20%"></div>
+  </mat-card-content>
+  <mat-card-actions fxLayout="row">
+    <div fxFlex="30%"></div>
+    <button id="generateVerseButton" (click)="generateVerse()" 
+    mat-raised-button color="primary" fxFlex="40%">New Verse</button>
+    <div fxFlex="30%"></div>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card class="loading" style="margin: auto; text-align: center" *ngIf="!verse.book">
+    <mat-spinner style="margin: auto"></mat-spinner>
+</mat-card>

@@ -1,22 +1,18 @@
-import { TestBed } from '@angular/core/testing';
-
 import { BibleBookIndexService } from './bible-book-index.service';
 
 describe('BibleBookIndexService', () => {
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-    })
-  });
+  const service: BibleBookIndexService = new BibleBookIndexService ();
 
   it('should be created', () => {
-    const service: BibleBookIndexService = TestBed.get(BibleBookIndexService);
     expect(service).toBeTruthy();
   });
 
   it('should return correct book', () => {
-    const service: BibleBookIndexService = TestBed.get(BibleBookIndexService);
     expect(service.getBook("Gen")).toBe("Genesis");
+  });
+
+  it('should return correct verse', () => {
+    expect(service.getVerseId(0)).toBe("eng-GNBDC:Gen.1.1");
   });
 });
 

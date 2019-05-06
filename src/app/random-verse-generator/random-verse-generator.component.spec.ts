@@ -3,16 +3,19 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RandomVerseGeneratorComponent } from './random-verse-generator.component';
 import { RandomVerseGeneratorService } from '../random-verse-generator.service';
 import { Verse } from '../verse';
+import { Observable, of } from 'rxjs';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+
 
 class MockRandomVerseGeneratorService {
 
-  generateVerse(): Promise<Verse> {
+  generateVerse(): Observable<Verse> {
      let verse: Verse =  new Verse();
      verse.book = "Genesis";
      verse.chapter = "1";
      verse.verse = "1";
      verse.text = "And God Said, let there be light";
-     return Promise.resolve(verse);
+     return of(verse);
   }
 }
 describe('RandomVerseGeneratorComponent', () => {
@@ -25,7 +28,8 @@ describe('RandomVerseGeneratorComponent', () => {
     mockRandomVerseGeneratorService = new MockRandomVerseGeneratorService();
     TestBed.configureTestingModule({
       declarations: [ RandomVerseGeneratorComponent ],
-      providers: [ {provide: RandomVerseGeneratorService, useValue: mockRandomVerseGeneratorService } ]
+      providers: [ {provide: RandomVerseGeneratorService, useValue: mockRandomVerseGeneratorService } ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

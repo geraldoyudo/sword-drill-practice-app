@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'sword-drill-practice-app';
+  title = 'Sword Drill Practice App';
+  opened = true;
+
+  toggleSideNav():void{
+    this.opened = !this.opened;
+  }
 }
