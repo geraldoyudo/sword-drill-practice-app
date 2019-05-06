@@ -4,6 +4,8 @@ import { RandomVerseGeneratorComponent } from './random-verse-generator.componen
 import { RandomVerseGeneratorService } from '../random-verse-generator.service';
 import { Verse } from '../verse';
 import { Observable, of } from 'rxjs';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+
 
 class MockRandomVerseGeneratorService {
 
@@ -26,7 +28,8 @@ describe('RandomVerseGeneratorComponent', () => {
     mockRandomVerseGeneratorService = new MockRandomVerseGeneratorService();
     TestBed.configureTestingModule({
       declarations: [ RandomVerseGeneratorComponent ],
-      providers: [ {provide: RandomVerseGeneratorService, useValue: mockRandomVerseGeneratorService } ]
+      providers: [ {provide: RandomVerseGeneratorService, useValue: mockRandomVerseGeneratorService } ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
