@@ -18,6 +18,7 @@ export class RandomVerseGeneratorComponent implements OnInit {
   }
 
   generateVerse(): void {
+    this.verse = new Verse();
     this.randomVerseGeneratorService.generateVerse().subscribe(verse => {
       this.verse = verse;
     })

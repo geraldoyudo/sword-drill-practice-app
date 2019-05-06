@@ -7,6 +7,7 @@ import { RandomVerseGeneratorComponent } from './random-verse-generator/random-v
 import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialComponentsModule } from './material-components.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MaterialComponentsModule } from './material-components.module';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialComponentsModule,
+    FlexLayoutModule,
     AppRoutingModule,
     HttpClientModule
   ],
